@@ -1,8 +1,5 @@
-# Dockerfile para Frontend React/TypeScript do CRM JT Telecom
+# Dockerfile para Frontend React - Versão Corrigida
 FROM node:18-alpine
-
-# Aumentar limite de memória para o Node.js
-ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 # Definir diretório de trabalho
 WORKDIR /app
@@ -16,7 +13,7 @@ RUN npm ci
 # Copiar código fonte
 COPY . .
 
-# Construir aplicação para produção (usando build otimizado)
+# Construir aplicação para produção
 RUN npm run build:prod
 
 # Instalar servidor estático
@@ -25,5 +22,5 @@ RUN npm install -g serve
 # Expor porta
 EXPOSE 3000
 
-# Comando para iniciar aplicação
+# Comando para servir arquivos estáticos
 CMD ["serve", "-s", "dist", "-l", "3000"]
