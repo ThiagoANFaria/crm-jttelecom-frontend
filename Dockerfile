@@ -11,13 +11,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instalar dependências
-RUN npm ci --verbose
+RUN npm ci
 
 # Copiar código fonte
 COPY . .
 
-# Construir aplicação para produção (com mais verbosidade para debug)
-RUN npm run build --verbose
+# Construir aplicação para produção (usando build otimizado)
+RUN npm run build:prod
 
 # Instalar servidor estático
 RUN npm install -g serve

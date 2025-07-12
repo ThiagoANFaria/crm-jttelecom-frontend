@@ -21,10 +21,16 @@ export default defineConfig({
           ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu']
         }
       }
-    }
+    },
+    // Ignorar warnings de TypeScript/ESLint durante build
+    chunkSizeWarningLimit: 1000,
   },
   server: {
     port: 3000,
     host: true
+  },
+  // Configurações para ignorar warnings
+  esbuild: {
+    logOverride: { 'this-is-undefined-in-esm': 'silent' }
   }
 })
