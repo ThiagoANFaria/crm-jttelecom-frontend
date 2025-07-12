@@ -7,8 +7,8 @@ WORKDIR /app
 # Copiar arquivos de dependências
 COPY package*.json ./
 
-# Instalar dependências
-RUN npm ci --only=production
+# Instalar TODAS as dependências (incluindo devDependencies para build)
+RUN npm ci
 
 # Copiar código fonte
 COPY . .
@@ -24,4 +24,3 @@ EXPOSE 3000
 
 # Comando para iniciar aplicação
 CMD ["serve", "-s", "dist", "-l", "3000"]
-
