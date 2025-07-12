@@ -86,29 +86,6 @@ const DashboardSimple: React.FC = () => {
     return `Gestão completa da ${currentTenant?.name || 'sua empresa'}`;
   };
 
-  const getMockData = () => {
-    if (user?.user_level === 'master') {
-      return {
-        tenants: 15,
-        totalUsers: 89,
-        totalLeads: 1247,
-        totalCalls: 3456,
-        revenue: 125000,
-        completedTasks: 234
-      };
-    } else {
-      // Dados específicos do tenant atual
-      const tenantMultiplier = currentTenant?.id === 'jt-telecom' ? 3 : 1;
-      return {
-        leads: Math.floor(45 * tenantMultiplier),
-        clients: Math.floor(23 * tenantMultiplier),
-        calls: Math.floor(156 * tenantMultiplier),
-        messages: Math.floor(89 * tenantMultiplier),
-        revenue: Math.floor(25000 * tenantMultiplier),
-        completedTasks: Math.floor(12 * tenantMultiplier)
-      };
-    }
-  };
 
   // Usar dados da API ou fallback para mockados
   const displayData = dashboardData || getMockData();
